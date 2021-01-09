@@ -1,1 +1,38 @@
+# https://habr.com/ru/company/click/blog/462029/
+
+<IfModule mod_rewrite.c>
+ 	RewriteEngine on
+ 	RewriteBase /
+</IfModule>
+
+# ServerSignature Off
 AddDefaultCharset UTF-8
+
+ErrorDocument 404 /error.php
+
+# RewriteRule ^404?$ 404.php [NC, L]
+
+
+# Код 301 редиректа на страницы без слеша:
+
+RewriteCond %{REQUEST_URI} !\?
+RewriteCond %{REQUEST_URI} !\&
+RewriteCond %{REQUEST_URI} !\=
+RewriteCond %{REQUEST_URI} !\.
+RewriteCond %{REQUEST_URI} ![^\/]$
+RewriteRule ^(.*)\/$ /$1 [R=301,L]
+
+
+# Редирект на HTTPS
+
+# RewriteEngine On
+# RewriteCond %{HTTPS} !on
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+
+# Редирект с www на без www
+
+# RewriteEngine On
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
