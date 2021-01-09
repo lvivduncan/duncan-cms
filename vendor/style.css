@@ -9,8 +9,9 @@
     margin:auto;
 }
 
-.block{
-    padding:30px 0;
+header{
+    background: rgb(255, 231, 231);
+    padding: 30px 0
 }
 
 .content{
@@ -18,15 +19,32 @@
     margin:30px auto;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-gap:20px;
+    grid-gap:30px;
 }
 
-header{
-    background: rgb(255, 231, 231);
+main{
+    background: rgb(210, 233, 167);
+    padding: 30px;
+}
+
+aside{
+    background:rgb(145, 204, 238);
+    padding: 30px;
+}
+
+aside ul{
+    display: block;
+    margin: 20px;
+}
+
+aside li{
+    display: block;
+    margin:0;
 }
 
 footer{
     background: rgb(150, 255, 185);
+    padding: 30px 0
 }
 
 hr{

@@ -1,3 +1,6 @@
+Options -Indexes +FollowSymLinks
+
+
 # https://habr.com/ru/company/click/blog/462029/
 
 <IfModule mod_rewrite.c>

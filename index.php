@@ -1,7 +1,8 @@
 <?php
-// error_reporting(E_ALL & ~E_NOTICE);
-error_reporting(E_ALL);
-require_once './config.php';
+    // error_reporting(E_ALL & ~E_NOTICE);
+    error_reporting(E_ALL);
+    require_once './config.php';
+    require_once './function.php';
 ?>
 <!DOCTYPE html>
 <html lang="uk">
@@ -13,15 +14,11 @@ require_once './config.php';
 </head>
 <body>
     
-    <header class="block">
+    <header>
         <div class="container">
             header
 
 <?php
-
-// INSERT INTO `users` (`id`, `login`, `password`, `email`) VALUES (NULL, 'admin', '8223fe8dc0533c6ebbb717e7fda2833c', 'duncan@site.com');
-
-
 
 
 
@@ -30,7 +27,7 @@ require_once './config.php';
 
         </div>
     </header>
-    <div class="content block">
+    <div class="content">
         <main>
 
         <?php
@@ -88,7 +85,7 @@ require_once './config.php';
         </aside>
     </div>
 
-    <footer class="block">
+    <footer>
         <div class="container">
             footer
         </div>
