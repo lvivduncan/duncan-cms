@@ -17,14 +17,6 @@
     <header>
         <div class="container">
             header
-
-<?php
-
-
-
-?>
-
-
         </div>
     </header>
     <div class="content">
