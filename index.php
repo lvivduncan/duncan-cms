@@ -1,15 +1,13 @@
 <?php
-    // error_reporting(E_ALL & ~E_NOTICE);
-    error_reporting(E_ALL);
+error_reporting(E_ALL);
 
-    if(file_exists('install.php')) {
-        header("Location: ./install.php");
-    }
+/* // relocate to install.php
+if(file_exists('install.php')) {
+    header("Location: ./install.php");
+} */
 
-    require_once './config.php';
-    require_once './function.php';
-
-    
+require_once './config.php';
+require_once './function.php';    
 ?>
 <!DOCTYPE html>
 <html lang="uk">

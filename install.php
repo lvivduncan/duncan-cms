@@ -30,6 +30,7 @@ if(
 
     $login = filter_var(trim($_POST['login'], FILTER_SANITIZE_STRING));
     $password = md5(filter_var(trim($_POST['password'], FILTER_SANITIZE_STRING)) . $salt);
+    // todo: check password
     $email = filter_var(trim($_POST['email'], FILTER_VALIDATE_EMAIL));
 
     $sql = 'INSERT INTO users (login, password, email) VALUES(?, ?, ?)';
@@ -57,7 +58,7 @@ HTML;
     chmod('config.php', 0644);
 
     if(!file_put_contents('config.php', $data)){
-        die('Не вдалося створити чи створити та записати файл config.php');
+        die('Не вдалося створити або записати файл config.php');
     }
 
     header("Location: ./admin.php");
@@ -80,7 +81,7 @@ $content = <<<HTML
         <hr>
         <input type="text" name="login" placeholder="login *" require>
         <input type="text" name="password" placeholder="password *" require>
-        <!-- <input type="text" name="password2"> -->
+        <!-- <input type="text" name="password2" placeholder="password again *" require> -->
         <input type="text" name="email" placeholder="email *" require>
         <button>Install!</button>
     </form>

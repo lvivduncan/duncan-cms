@@ -6,7 +6,6 @@ if(file_exists('install.php')) {
     }
 } */
 
-// error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(E_ALL);
 
 if(phpversion()<7){
