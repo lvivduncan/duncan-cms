@@ -1,6 +1,11 @@
 <?php
     // error_reporting(E_ALL & ~E_NOTICE);
     error_reporting(E_ALL);
+
+    if(file_exists('install.php')) {
+        header("Location: ./install.php");
+    }
+
     require_once './config.php';
     require_once './function.php';
 

@@ -59,7 +59,6 @@ HTML;
         form{width:300px;margin:auto;padding:5px}
         input{display:block;margin:5px;padding:5px;width:100%}
         button{display:block;margin:5px;padding:5px;cursor:pointer}
-        /* .message{text-align:center;padding:5px} */
     </style>
     <form method="post">
         <input type="text" name="login">
