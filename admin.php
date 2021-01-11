@@ -1,5 +1,11 @@
 <?php
-// session_start();
+// delete install.php
+if(file_exists('install.php')) {
+    if(!unlink('install.php')){
+        die('Видаліть файл install.php');
+    }
+}
+
 // error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(E_ALL);
 
@@ -20,49 +26,52 @@ require_once './function.php';
 if($_POST['login'] && $_POST['password']){
 
     $login = trim($_POST['login']);
-    $password = md5(trim($_POST['password']).$salt);
+    $password = trim($_POST['password']);
 
-    $sql = 'SELECT `id` FROM `users` WHERE `login` = :login && `password` = :password';
+    $sql = 'SELECT `login` FROM `users` WHERE `login` = :login && `password` = :password';
     $query = $pdo->prepare($sql);
-    $query->execute(['login' => $login, 'password' => $password]);
+    $query->execute(['login' => $login, 'password' => md5($password.$salt)]);
     $user = $query->fetch(PDO::FETCH_OBJ);
 
     $message = '';
-    if($user->id == 1){
-        setcookie('admin', $login, time() + 100);
+    if($user->login == $login){
+        setcookie('admin', $login, time() + 3600);
         $message = <<<HTML
         <style>
             *{padding:0;margin:0;box-sizing:border-box}
             .message{text-align:center;padding:5px}
-            .message button{display:block;margin:5px;padding:5px;cursor:pointer;color:red}
+            form{width:300px;margin:auto;padding:5px}
+            form button{display:block;margin:5px;padding:5px;cursor:pointer;color:red}
         </style>
         <form method="post" class="message" name="out">
-            <button>Out</button>
+            <button>Вийти?</button>
         </form>
+        <p class="message">У системі</p>
 HTML;
-        $message .= '<p class="message">У системі</p>';
+
+        // redirect
+        // header("Location:" . $_SERVER['PHP_SELF']);
     }
 } else {
     $message = <<<HTML
     <style>
         *{padding:0;margin:0;box-sizing:border-box}
-        form{width:300px;margin:auto}
-        input{display:block;margin:5px;padding:5px}
+        form{width:300px;margin:auto;padding:5px}
+        input{display:block;margin:5px;padding:5px;width:100%}
         button{display:block;margin:5px;padding:5px;cursor:pointer}
-        .message{text-align:center;padding:5px}
+        /* .message{text-align:center;padding:5px} */
     </style>
     <form method="post">
         <input type="text" name="login">
         <input type="text" name="password">
-        <button>login</button>
+        <button>Увійти</button>
     </form>
-    $message
 HTML;
 }
 
 // out from admin-panel
 if($_POST['out']){
-    setcookie('admin', $login, time() - 100);
+    setcookie('admin', $login, time() - 3600);
 }
 
 echo $message;
