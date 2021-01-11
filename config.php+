@@ -7,4 +7,5 @@ $host = 'localhost';
 $dsn = 'mysql:host='.$host.';dbname='.$db;
 $pdo = new PDO($dsn, $user, $password);
 
-$salt = 'respublica';
+// salt for user password
+$salt = 'abc';
