@@ -1,10 +1,10 @@
 <?php
-// delete install.php
+/* // delete install.php
 if(file_exists('install.php')) {
     if(!unlink('install.php')){
         die('Видаліть файл install.php');
     }
-}
+} */
 
 // error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(E_ALL);
